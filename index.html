@@ -23,7 +23,10 @@ const dynata= 'https://dkr1.ssisurveys.com/projects/end?rst='
 console.log(dynata+rst+"&psid="+psid);
 console.log(synapta+cn);
 console.log(dk,cn,pid,psid,rst,basic)
-setTimeout(httpGetAsync(synapta+cn,window.location.replace(dynata+es+"&psid="+ps)),50000)
+
+if (rst === 1) {httpGetAsync(synapta+cn,window.location.replace(dynata+rst+"&psid="+psid+"&basic="+basic))} 
+else {httpGetAsync(synapta+cn,window.location.replace(dynata+rst+"&psid="+psid))}
+
 		</script>
 		<!-- <meta http-equiv="refresh" content="0; url=http://www.mysmsdiary.com/" /> -->
 	</head>
