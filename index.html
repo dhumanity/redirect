@@ -12,15 +12,15 @@ function httpGetAsync(theUrl, callback){
 }
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-const kw = urlParams.get('kw')
+const dk = urlParams.get('dk')
 const cn = urlParams.get('cn')
-const pi = urlParams.get('pi')
-const ps = urlParams.get('ps')
-const es = urlParams.get('es')
-const ba = urlParams.get('ba')
+const pid = urlParams.get('pid')
+const psid = urlParams.get('psid')
+const rst = urlParams.get('rst')
+const basic = urlParams.get('basic')
 const synapta = 'https://mesh.the3rddegree.co.uk/crm/MeshDiaryInjectorServlet?keyword=testing&contactnumber='
 const dynata= 'https://dkr1.ssisurveys.com/projects/end?rst='
-console.log(dynata+es+"&psid="+ps);
+console.log(dynata+rst+"&psid="+ps);
 console.log(synapta+cn);
 // setTimeout(httpGetAsync(synapta+cn,window.location.replace(dynata+es+"&psid="+ps)),50000)
 		</script>
