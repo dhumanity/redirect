@@ -1,52 +1,51 @@
 <html>
-	<head>
-		<script>
-function httpGetAsync(theUrl, callback){
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function() { 
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-            document.getElementById("Synapta").innerHTML = xmlHttp.responseText;
-    	} else { document.getElementById("Fail").innerHTML = xmlHttp.responseText;}
-		setTimeout(callback(),5000)}
-    xmlHttp.open("GET", theUrl, false); // true for asynchronous 
-    xmlHttp.send(null);
-}
-
-function Dynata(rst,psid,basic){
-	const dynata= 'https://dkr1.ssisurveys.com/projects/end?rst='
-	if (rst == 1) {document.getElementById("Dynata").src = dynata+rst+"&psid="+psid+"&basic="+basic;}
-	else {document.getElementById("Dynata").src = dynata+rst+"&psid="+psid}
-	setTimeout(window.location.replace('https://www.mysmsdiary.com/'),5000)
-}
-
-
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const dk = urlParams.get('dk')
-const cn = urlParams.get('cn')
-const pid = urlParams.get('pid')
-const psid = urlParams.get('psid')
-const rst = urlParams.get('rst')
-const basic = urlParams.get('basic')
-const synapta = 'https://mesh.the3rddegree.co.uk/crm/MeshDiaryInjectorServlet?keyword='
-const dynata= 'https://dkr1.ssisurveys.com/projects/end?rst='
-console.log(dynata+rst+"&psid="+psid);
-console.log(synapta+cn);
-console.log(dk,cn,pid,psid,rst,basic)
-
-if (rst == 1) {httpGetAsync(synapta+dk+'&contactnumber='+cn+'&pid='+pid+'&psid='+psid,Dynata(rst,psid,basic))}
-else {window.location.replace(dynata+rst+"&psid="+psid)}
-
-
-		</script>
-		<!-- <meta http-equiv="refresh" content="0; url=http://www.mysmsdiary.com/" /> -->
-	</head>
 	<body>
 		<div id="Synapta"></div>
 		<div id="Fail"></div>
 		<iframe id="Dynata"></iframe>
 		<p><a href="http://www.mysmsdiary.com/">Redirect</a></p>
 	</body>
+	<footer>
+		<script>
+			function httpGetAsync(theUrl, callback){
+				var xmlHttp = new XMLHttpRequest();
+				xmlHttp.onreadystatechange = function() { 
+					if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+						document.getElementById("Synapta").innerHTML = xmlHttp.responseText;
+					} else { document.getElementById("Fail").innerHTML = xmlHttp.responseText;}
+					setTimeout(callback(),5000)}
+				xmlHttp.open("GET", theUrl, false); // true for asynchronous 
+				xmlHttp.send(null);
+			}
+			
+			function Dynata(rst,psid,basic){
+				const dynata= 'https://dkr1.ssisurveys.com/projects/end?rst='
+				if (rst == 1) {document.getElementById("Dynata").src = dynata+rst+"&psid="+psid+"&basic="+basic;}
+				else {document.getElementById("Dynata").src = dynata+rst+"&psid="+psid}
+				setTimeout(window.location.replace('https://www.mysmsdiary.com/'),5000)
+			}
+			
+			
+			const queryString = window.location.search;
+			const urlParams = new URLSearchParams(queryString);
+			const dk = urlParams.get('dk')
+			const cn = urlParams.get('cn')
+			const pid = urlParams.get('pid')
+			const psid = urlParams.get('psid')
+			const rst = urlParams.get('rst')
+			const basic = urlParams.get('basic')
+			const synapta = 'https://mesh.the3rddegree.co.uk/crm/MeshDiaryInjectorServlet?keyword='
+			const dynata= 'https://dkr1.ssisurveys.com/projects/end?rst='
+			console.log(dynata+rst+"&psid="+psid);
+			console.log(synapta+cn);
+			console.log(dk,cn,pid,psid,rst,basic)
+			
+			if (rst == 1) {httpGetAsync(synapta+dk+'&contactnumber='+cn+'&pid='+pid+'&psid='+psid,Dynata(rst,psid,basic))}
+			else {window.location.replace(dynata+rst+"&psid="+psid)}
+			
+			
+					</script>
+	</footer>
 </html>
 
 <!-- Complete (Qualified)           https://dkr1.ssisurveys.com/projects/end?rst=1&psid=XXXX&basic=63945
