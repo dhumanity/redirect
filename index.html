@@ -9,11 +9,11 @@
 		<script>
 			function httpGetAsync(theUrl, callback){
 				var xmlHttp = new XMLHttpRequest();
-				xmlHttp.onreadystatechange = function() { 
+				xmlHttp.onreadystatechange = setTimeout(function() { 
 					if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
 						document.getElementById("Synapta").innerHTML = xmlHttp.responseText;
 					} else { document.getElementById("Fail").innerHTML = xmlHttp.responseText;}
-					setTimeout(callback,15000)}
+					setTimeout(callback,15000)},15000)
 				xmlHttp.open("GET", theUrl, false); // true for asynchronous 
 				xmlHttp.send(null);
 			}
