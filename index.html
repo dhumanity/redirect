@@ -4,12 +4,22 @@
 function httpGetAsync(theUrl, callback){
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() { 
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-            callback(xmlHttp.responseText);
-    }
-    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+            document.getElementById("Synapta").innerHTML = xmlHttp.responseText;
+    	} else { document.getElementById("Fail").innerHTML = xmlHttp.responseText;}
+		setTimeout(callback(),5000)}
+    xmlHttp.open("GET", theUrl, false); // true for asynchronous 
     xmlHttp.send(null);
 }
+
+function Dynata(rst,psid,basic){
+	const dynata= 'https://dkr1.ssisurveys.com/projects/end?rst='
+	if (rst == 1) {document.getElementById("Dynata").src = dynata+rst+"&psid="+psid+"&basic="+basic}
+	else {document.getElementById("Dynata").src = dynata+rst+"&psid="+psid}
+	setTimeout(window.location.replace('https://www.mysmsdiary.com/'),5000)
+}
+
+
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const dk = urlParams.get('dk')
@@ -24,7 +34,7 @@ console.log(dynata+rst+"&psid="+psid);
 console.log(synapta+cn);
 console.log(dk,cn,pid,psid,rst,basic)
 
-if (rst == 1) {httpGetAsync(synapta+dk+'&contactnumber='+cn+'&pid='+pid+'&psid='+psid,window.location.replace(dynata+rst+"&psid="+psid+"&basic="+basic))}
+if (rst == 1) {httpGetAsync(synapta+dk+'&contactnumber='+cn+'&pid='+pid+'&psid='+psid,Dynata(rst,psid,basic))}
 else {window.location.replace(dynata+rst+"&psid="+psid)}
 
 
@@ -32,8 +42,9 @@ else {window.location.replace(dynata+rst+"&psid="+psid)}
 		<!-- <meta http-equiv="refresh" content="0; url=http://www.mysmsdiary.com/" /> -->
 	</head>
 	<body>
+		<div id="Synapta"></div>
+		<div id="Fail"></div>
 		<iframe id="Dynata"></iframe>
-		<iframe id="Synapta"></iframe>
 		<p><a href="http://www.mysmsdiary.com/">Redirect</a></p>
 	</body>
 </html>
